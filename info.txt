@@ -1,0 +1,2 @@
+map link = https://maps.app.goo.gl/XtizRjeFomzLQs7s8
+services = bridal makeup, hair styling , threading, waxing,  hair cutting , facial , 
