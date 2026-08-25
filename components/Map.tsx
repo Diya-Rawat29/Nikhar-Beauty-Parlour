@@ -6,7 +6,7 @@ import Container from "./ui/Container";
 import Button from "./ui/Button";
 
 export default function Map() {
-  const mapIframeUrl = "https://www.google.com/maps/embed?pb=!1m17!1s0x3963a17ddf406be7:0xfa633c888d1affe0!2sNikhar+herbal+beauty+parlour!3m8!1m3!1d3672.363451704651!2d75.6755305!3d23.0104237!3m2!1i1024!2i768!4f13.1!4m2!3d23.0104237!4d75.6755305";
+  const mapIframeUrl = "https://maps.google.com/maps?q=12-Kha,%20Dampura,%20Harsola,%20Indore,%20Madhya%20Pradesh%20453441&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   return (
     <section id="map" className="py-16 sm:py-24 bg-cream relative border-t border-gold/10">
@@ -29,10 +29,10 @@ export default function Map() {
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-maroon tracking-wide">
-                Find Us in Barnagar
+                Find Us in Indore
               </h2>
               <p className="font-sans text-sm sm:text-base text-espresso/70 leading-relaxed font-medium">
-                We are centrally located on Jawahar Marg. Visit our studio to experience premium Indian bridal makeovers and beauty care.
+                We are located in Harsola, Indore. Visit our studio to experience premium Indian bridal makeovers and beauty care.
               </p>
             </div>
 
@@ -43,8 +43,8 @@ export default function Map() {
                 <div>
                   <h4 className="font-sans text-xs font-bold text-espresso uppercase tracking-wider">Address</h4>
                   <p className="font-sans text-xs sm:text-sm text-espresso/70 mt-1 leading-relaxed font-semibold">
-                    Jawahar Marg, Badnagar (Barnagar),<br />
-                    Madhya Pradesh - 456771
+                    12-Kha, Dampura, Harsola, Indore,<br />
+                    Madhya Pradesh - 453441
                   </p>
                 </div>
               </div>
@@ -64,10 +64,10 @@ export default function Map() {
                 <div>
                   <h4 className="font-sans text-xs font-bold text-espresso uppercase tracking-wider">Contact Phone</h4>
                   <a
-                    href="tel:+919425475675"
+                    href="tel:+918827417126"
                     className="font-sans text-xs sm:text-sm text-espresso/70 mt-1 block font-bold hover:text-maroon transition-colors"
                   >
-                    +91 94254 75675
+                    +91 88274 17126
                   </a>
                 </div>
               </div>

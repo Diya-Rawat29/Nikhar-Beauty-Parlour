@@ -10,7 +10,7 @@ export default function Reviews() {
       name: "Priyanshi Sharma",
       role: "Bridal Makeover Client",
       stars: 5,
-      text: "Nikhar Makeovers is my absolute go-to! Their bridal makeover is lightweight, looks natural in person, and photographed beautifully all night. The draping was secure and comfortable. Highly recommended in the Barnagar region!",
+      text: "Nikhar Makeovers is my absolute go-to! Their bridal makeover is lightweight, looks natural in person, and photographed beautifully all night. The draping was secure and comfortable. Highly recommended in the Indore region!",
     },
     {
       name: "Anita Rajawat",
@@ -22,7 +22,7 @@ export default function Reviews() {
       name: "Megha Jain",
       role: "Festive Styling Client",
       stars: 5,
-      text: "Outstanding hair styling and mehndi work. The team is very patient, precise, and professional. Truly the most reliable ladies makeover studio in Badnagar.",
+      text: "Outstanding hair styling and mehndi work. The team is very patient, precise, and professional. Truly the most reliable ladies makeover studio in Indore.",
     },
   ];
 

@@ -21,7 +21,7 @@ export default function TrustStrip() {
     },
     {
       icon: <MapPin className="w-4 h-4 text-gold shrink-0" />,
-      text: "Located in Barnagar, MP",
+      text: "Located in Indore, MP",
       link: "#map",
     },
   ];

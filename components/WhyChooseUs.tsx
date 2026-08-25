@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
         <SectionHeading
           eyebrow="Our Commitment"
           title="Why Women Choose Nikhar"
-          description="We prioritize safety, comfort, and professional execution to deliver a luxury makeover experience in Barnagar."
+          description="We prioritize safety, comfort, and professional execution to deliver a luxury makeover experience in Indore."
           className="mb-16"
         />
 

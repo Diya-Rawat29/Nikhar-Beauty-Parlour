@@ -81,7 +81,7 @@ export default function About() {
 
             {/* Paragraph */}
             <p className="font-sans text-sm sm:text-base text-espresso/80 leading-relaxed font-medium">
-              Nikhar is a premium makeover and beauty studio based in Barnagar, Ujjain. We specialize in custom-crafted bridal styling, intricate hairstyling, saree pleating, and high-end skin care treatments. Our philosophy centers on emphasizing your organic contours, ensuring you look breathtakingly elegant yet traditional.
+              Nikhar, founded by Pinky Jaiswal, is a premium makeover and beauty studio based in Harsola, Indore. We specialize in custom-crafted bridal styling, intricate hairstyling, saree pleating, and high-end skin care treatments. Our philosophy centers on emphasizing your organic contours, ensuring you look breathtakingly elegant yet traditional.
             </p>
 
             {/* 3 Small Trust Points */}

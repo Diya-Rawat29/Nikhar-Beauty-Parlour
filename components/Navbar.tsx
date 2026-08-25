@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Phone, Calendar, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
@@ -8,6 +8,14 @@ import Button from "./ui/Button";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Focus restoration when mobile drawer closes
+  useEffect(() => {
+    if (!isMobileOpen) {
+      toggleRef.current?.focus();
+    }
+  }, [isMobileOpen]);
 
   // Scroll handler for navbar background transformation
   useEffect(() => {
@@ -106,8 +114,8 @@ export default function Navbar() {
 
             {/* Desktop Right Side CTA */}
             <div className="hidden lg:flex items-center space-x-6">
-              <a
-                href="tel:+919425475675"
+               <a
+                href="tel:+918827417126"
                 className="flex items-center space-x-2 text-xs font-bold text-espresso/90 hover:text-maroon transition-colors font-sans tracking-widest uppercase focus:outline-none focus:ring-2 focus:ring-gold/60 rounded px-1.5 py-0.5"
                 aria-label="Call Nikhar Makeovers directly"
               >
@@ -130,9 +138,11 @@ export default function Navbar() {
             {/* Mobile Hamburger toggle */}
             <div className="lg:hidden flex items-center">
               <button
+                ref={toggleRef}
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 className="text-espresso hover:text-maroon p-2 focus:outline-none focus:ring-2 focus:ring-gold/60 rounded-xl"
                 aria-expanded={isMobileOpen}
+                aria-controls="mobile-nav-drawer"
                 aria-label={isMobileOpen ? "Close menu" : "Open menu"}
               >
                 {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -157,6 +167,9 @@ export default function Navbar() {
 
             {/* Drawer Content */}
             <motion.div
+              id="mobile-nav-drawer"
+              role="dialog"
+              aria-modal="true"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -201,7 +214,7 @@ export default function Navbar() {
               {/* Bottom CTAs inside drawer */}
               <div className="space-y-4 pt-6 border-t border-gold/15">
                 <a
-                  href="tel:+919425475675"
+                  href="tel:+918827417126"
                   onClick={() => setIsMobileOpen(false)}
                   className="w-full flex items-center justify-center space-x-3 py-3 border border-gold/30 hover:bg-gold/10 text-espresso font-semibold uppercase tracking-widest text-xs rounded-full min-h-[48px] focus:outline-none focus:ring-2 focus:ring-gold"
                   aria-label="Call Nikhar Makeovers now"
@@ -210,7 +223,7 @@ export default function Navbar() {
                   <span>Call Now</span>
                 </a>
                 <a
-                  href="https://wa.me/919425475675?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20your%20bridal%20packages."
+                  href="https://wa.me/918827417126?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20your%20bridal%20packages."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileOpen(false)}

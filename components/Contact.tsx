@@ -35,6 +35,14 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const getTodayString = () => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.service) {
@@ -42,10 +50,32 @@ export default function Contact() {
       return;
     }
 
+    // Dynamic date validation in submit
+    if (formData.date) {
+      const selected = new Date(formData.date);
+      const today = new Date(getTodayString());
+      if (selected < today) {
+        alert("Preferred date cannot be in the past.");
+        return;
+      }
+    }
+
     setIsSubmitting(true);
+
+    const textPayload = `Hello Nikhar Makeovers, I would like to request an appointment:
+- Name: ${formData.name}
+- Phone: ${formData.phone}
+- Service: ${formData.service}
+- Preferred Date: ${formData.date || "Not specified"}
+- Special Request: ${formData.message || "None"}`;
+
+    const whatsappUrl = `https://wa.me/918827417126?text=${encodeURIComponent(textPayload)}`;
+
+    setSubmitMessage("Booking request compiled! Redirecting to WhatsApp to confirm your appointment...");
+
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitMessage("Thank you! Your makeover appointment request has been sent. We will contact you shortly to confirm your booking.");
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       setFormData({
         name: "",
         phone: "",
@@ -53,7 +83,7 @@ export default function Contact() {
         date: "",
         message: "",
       });
-    }, 1200);
+    }, 1500);
   };
 
   return (
@@ -97,8 +127,8 @@ export default function Contact() {
                     Our Location
                   </h4>
                   <p className="font-sans text-xs sm:text-sm text-espresso/70 mt-1 leading-relaxed font-semibold">
-                    Jawahar Marg, Badnagar (Barnagar),<br />
-                    Madhya Pradesh - 456771
+                    12-Kha, Dampura, Harsola, Indore,<br />
+                    Madhya Pradesh - 453441
                   </p>
                 </div>
               </div>
@@ -112,11 +142,11 @@ export default function Contact() {
                     Phone & Bookings
                   </h4>
                   <a
-                    href="tel:+919425475675"
+                    href="tel:+918827417126"
                     className="font-sans text-xs sm:text-sm text-espresso/70 mt-1 hover:text-maroon transition-colors block font-bold focus:outline-none focus:ring-2 focus:ring-gold/60 rounded"
                     aria-label="Call studio direct number"
                   >
-                    +91 94254 75675
+                    +91 88274 17126
                   </a>
                 </div>
               </div>
@@ -140,7 +170,7 @@ export default function Contact() {
             {/* Quick WhatsApp Action on left */}
             <div className="pt-6 border-t border-gold/15">
               <a
-                href="https://wa.me/919425475675?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20booking%20an%20appointment."
+                href="https://wa.me/918827417126?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20booking%20an%20appointment."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center space-x-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 min-h-[48px] px-8 bg-transparent hover:bg-gold/10 text-espresso border border-gold/45 hover:border-gold focus:outline-none focus:ring-2 focus:ring-gold w-full sm:w-auto"
@@ -231,6 +261,7 @@ export default function Contact() {
                     type="date"
                     id="date"
                     name="date"
+                    min={getTodayString()}
                     value={formData.date}
                     onChange={handleInputChange}
                     className="bg-cream border border-gold/20 rounded-xl px-4 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans h-12 cursor-pointer"

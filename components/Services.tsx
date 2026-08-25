@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, X, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,17 +28,42 @@ interface CategoryData {
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState<CategoryData | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // Esc key closes the modal
+  // Native HTML5 dialog control
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && activeCategory) {
-        setActiveCategory(null);
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (activeCategory) {
+      dialog.showModal();
+    } else {
+      try {
+        dialog.close();
+      } catch (e) {
+        // Prevent crashes if dialog is already closed
       }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    }
   }, [activeCategory]);
+
+  // Sync state when native dialog closes (e.g. on native ESC key)
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const handleClose = () => {
+      setActiveCategory(null);
+    };
+
+    dialog.addEventListener("close", handleClose);
+    return () => dialog.removeEventListener("close", handleClose);
+  }, []);
+
+  const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === dialogRef.current) {
+      setActiveCategory(null);
+    }
+  };
 
   // Lock background scroll when modal is open
   useEffect(() => {
@@ -251,110 +276,99 @@ export default function Services() {
         </div>
 
       </Container>
-
       {/* Services List Lightbox Modal */}
-      <AnimatePresence>
+      <dialog
+        ref={dialogRef}
+        onClick={handleDialogClick}
+        className="backdrop:bg-espresso/70 backdrop:backdrop-blur-sm bg-transparent border-0 outline-none p-4 md:p-6 max-w-2xl w-full max-h-[90vh] overflow-visible my-auto mx-auto select-none"
+      >
         {activeCategory && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" role="dialog" aria-modal="true">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="relative w-full bg-cream rounded-2xl shadow-2xl border border-gold/25 overflow-hidden flex flex-col max-h-[80vh] text-left select-text"
+          >
             
-            {/* Backdrop click close */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-espresso/70 backdrop-blur-sm"
-              onClick={() => setActiveCategory(null)}
-            />
-
-            {/* Modal Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full max-w-2xl bg-cream rounded-2xl shadow-2xl border border-gold/25 overflow-hidden flex flex-col max-h-[85vh] z-10 text-left"
-            >
-              
-              {/* Modal Header */}
-              <div className="relative bg-maroon text-cream p-6 sm:p-8 border-b border-gold/15 shrink-0 flex justify-between items-start">
-                <div className="space-y-2 max-w-[85%]">
-                  <span className="font-sans text-[10px] tracking-[0.25em] font-bold text-gold uppercase">
-                    Category {activeCategory.num} • Services
-                  </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-wide">
-                    {activeCategory.title} Makeovers
-                  </h2>
-                  <p className="font-sans text-xs sm:text-sm text-cream/70 leading-relaxed font-medium">
-                    {activeCategory.longDesc}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setActiveCategory(null)}
-                  className="p-2 text-cream/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded-full"
-                  aria-label="Close services list"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+            {/* Modal Header */}
+            <div className="relative bg-maroon text-cream p-6 sm:p-8 border-b border-gold/15 shrink-0 flex justify-between items-start">
+              <div className="space-y-2 max-w-[85%]">
+                <span className="font-sans text-[10px] tracking-[0.25em] font-bold text-gold uppercase">
+                  Category {activeCategory.num} • Services
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-wide">
+                  {activeCategory.title} Makeovers
+                </h2>
+                <p className="font-sans text-xs sm:text-sm text-cream/70 leading-relaxed font-medium">
+                  {activeCategory.longDesc}
+                </p>
               </div>
+              <button
+                onClick={() => setActiveCategory(null)}
+                className="p-2 text-cream/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded-full"
+                aria-label="Close services list"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
-              {/* Modal Body / Services List */}
-              <div className="p-6 sm:p-8 overflow-y-auto space-y-6 bg-cream">
-                {activeCategory.services.map((service, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-5 border-b border-gold/10 last:border-b-0 last:pb-0"
-                  >
-                    <div className="flex items-start space-x-4 text-left">
-                      {/* Image Thumbnail as Icon */}
-                      <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-gold/20 shadow-sm mt-0.5">
-                        <Image
-                          src={service.image}
-                          alt={service.name}
-                          fill
-                          className="object-cover"
-                          sizes="48px"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <h4 className="font-serif text-base sm:text-lg font-bold text-espresso">
-                          {service.name}
-                        </h4>
-                        <p className="font-sans text-xs sm:text-sm text-espresso/70 leading-relaxed max-w-md font-medium">
-                          {service.desc}
-                        </p>
-                      </div>
+            {/* Modal Body / Services List */}
+            <div className="p-6 sm:p-8 overflow-y-auto space-y-6 bg-cream">
+              {activeCategory.services.map((service, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-5 border-b border-gold/10 last:border-b-0 last:pb-0"
+                >
+                  <div className="flex items-start space-x-4 text-left">
+                    {/* Image Thumbnail as Icon */}
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-gold/20 shadow-sm mt-0.5">
+                      <Image
+                        src={service.image}
+                        alt={service.name}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
                     </div>
-                    {/* Price tag */}
-                    <div className="self-end sm:self-start bg-gold-light/40 border border-gold/20 text-maroon font-bold text-[10px] sm:text-xs font-sans tracking-wide uppercase px-3 py-1 rounded-full whitespace-nowrap">
-                      {service.price}
+                    <div className="space-y-1">
+                      <h4 className="font-serif text-base sm:text-lg font-bold text-espresso">
+                        {service.name}
+                      </h4>
+                      <p className="font-sans text-xs sm:text-sm text-espresso/70 leading-relaxed max-w-md font-medium">
+                        {service.desc}
+                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
+                  {/* Price tag */}
+                  <div className="self-end sm:self-start bg-gold-light/40 border border-gold/20 text-maroon font-bold text-[10px] sm:text-xs font-sans tracking-wide uppercase px-3 py-1 rounded-full whitespace-nowrap">
+                    {service.price}
+                  </div>
+                </div>
+              ))}
+            </div>
 
-              {/* Modal Footer */}
-              <div className="p-6 bg-beige/40 border-t border-gold/15 shrink-0 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <span className="font-sans text-xs text-espresso/60 font-semibold text-center sm:text-left">
-                  Need a customized trial pack or wedding styling rates?
+            {/* Modal Footer */}
+            <div className="p-6 bg-beige/40 border-t border-gold/15 shrink-0 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="font-sans text-xs text-espresso/60 font-semibold text-center sm:text-left">
+                Need a customized trial pack or wedding styling rates?
+              </span>
+              <Button
+                href="#contact"
+                onClick={() => setActiveCategory(null)}
+                variant="primary"
+                className="w-full sm:w-auto !min-h-[40px] !py-2.5 text-[10px] tracking-widest"
+                ariaLabel="Book appointment for selected services"
+              >
+                <span className="flex items-center space-x-2">
+                  <Calendar className="w-4 h-4 text-gold-light" />
+                  <span>BOOK ENQUIRY NOW</span>
                 </span>
-                <Button
-                  href="#contact"
-                  onClick={() => setActiveCategory(null)}
-                  variant="primary"
-                  className="w-full sm:w-auto !min-h-[40px] !py-2.5 text-[10px] tracking-widest"
-                  ariaLabel="Book appointment for selected services"
-                >
-                  <span className="flex items-center space-x-2">
-                    <Calendar className="w-4 h-4 text-gold-light" />
-                    <span>BOOK ENQUIRY NOW</span>
-                  </span>
-                </Button>
-              </div>
+              </Button>
+            </div>
 
-            </motion.div>
-          </div>
+          </motion.div>
         )}
-      </AnimatePresence>
+      </dialog>
     </section>
   );
 }

@@ -155,7 +155,7 @@ export default function Gallery() {
         {/* View Instagram Redirection Button */}
         <div className="mt-14 flex justify-center">
           <a
-            href="https://www.instagram.com/nikharmakeovers/"
+            href="https://www.instagram.com/nikharmakeovers?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 min-h-[48px] px-8 bg-transparent hover:bg-gold/10 text-espresso border border-gold/45 hover:border-gold focus:outline-none focus:ring-2 focus:ring-gold"

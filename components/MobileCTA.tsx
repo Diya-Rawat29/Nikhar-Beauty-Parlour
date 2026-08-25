@@ -8,7 +8,7 @@ export default function MobileCTA() {
       
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919425475675?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20your%20bridal%20packages."
+        href="https://wa.me/918827417126?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20enquire%20about%20your%20bridal%20packages."
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 flex flex-col items-center justify-center h-full text-espresso hover:text-green-600 transition-colors focus:outline-none focus:ring-1 focus:ring-gold rounded-lg"
@@ -25,7 +25,7 @@ export default function MobileCTA() {
 
       {/* Call Button */}
       <a
-        href="tel:+919425475675"
+        href="tel:+918827417126"
         className="flex-1 flex flex-col items-center justify-center h-full text-espresso hover:text-maroon transition-colors focus:outline-none focus:ring-1 focus:ring-gold rounded-lg"
         aria-label="Call studio phone number"
       >
