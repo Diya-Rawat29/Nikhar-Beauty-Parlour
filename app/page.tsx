@@ -9,12 +9,13 @@ import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Map from "@/components/Map";
 import Footer from "@/components/Footer";
+import MobileCTA from "@/components/MobileCTA";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pb-16 md:pb-0">
         <Hero />
         <About />
         <Services />
@@ -26,6 +27,7 @@ export default function Home() {
         <Map />
       </main>
       <Footer />
+      <MobileCTA />
     </>
   );
 }

@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, MapPin, Clock, Mail, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import Container from "./ui/Container";
+import SectionHeading from "./ui/SectionHeading";
+import Button from "./ui/Button";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,14 +19,13 @@ export default function Contact() {
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
   const servicesList = [
-    "Bridal Makeup Consultation",
-    "Party / Engagement Makeup",
-    "Traditional Hair Styling / Gajra",
+    "Bridal Makeover Consultation",
+    "Party / Engagement Makeover",
+    "Traditional Hairstyling / Gajra",
     "Nourishing Hair Spa / Keratin",
     "Skin Glow Facial / Cleanup",
     "Traditional Saree / Lehenga Draping",
     "Bridal or Festive Mehndi",
-    "Threading / Waxing",
   ];
 
   const handleInputChange = (
@@ -41,10 +43,9 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-    // Mock API request delay
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitMessage("Thank you! Your appointment request has been sent. We will contact you shortly to confirm.");
+      setSubmitMessage("Thank you! Your makeover appointment request has been sent. We will contact you shortly to confirm.");
       setFormData({
         name: "",
         phone: "",
@@ -52,15 +53,15 @@ export default function Contact() {
         date: "",
         message: "",
       });
-    }, 1500);
+    }, 1200);
   };
 
   return (
-    <section id="contact" className="py-20 bg-cream relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <section id="contact" className="py-14 sm:py-20 bg-cream relative">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           
-          {/* Left Column: Details */}
+          {/* Left Column: Studio Details */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,62 +70,59 @@ export default function Contact() {
             className="lg:col-span-5 space-y-6 flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center space-x-2">
-                <span className="w-6 h-[1px] bg-gold"></span>
-                <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-gold uppercase font-sans">
-                  Get In Touch
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-maroon">
-                Let&apos;s Create Your Perfect Look
-              </h2>
+              <SectionHeading
+                eyebrow="Book Appointment"
+                title="Let's Create Your Perfect Look"
+                align="left"
+              />
               <p className="font-sans text-sm sm:text-base text-espresso/70 leading-relaxed">
                 Contact us to request an appointment, plan a bridal consultation, or customize package bookings. Walk-ins are subject to stylist availability.
               </p>
             </div>
 
-            {/* Address cards */}
-            <div className="space-y-4 pt-4">
-              <div className="flex items-start space-x-4">
-                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5">
+            {/* Address items */}
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start space-x-4 text-left">
+                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5 shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-sans text-sm font-bold text-espresso uppercase tracking-wider">
+                  <h4 className="font-sans text-xs font-bold text-espresso uppercase tracking-wider">
                     Our Location
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-espresso/70 mt-0.5">
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-espresso/70 mt-0.5 leading-relaxed">
                     Jawahar Marg, Badnagar (Barnagar),<br />
                     Madhya Pradesh - 456771
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5">
+              <div className="flex items-start space-x-4 text-left">
+                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5 shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-sans text-sm font-bold text-espresso uppercase tracking-wider">
+                  <h4 className="font-sans text-xs font-bold text-espresso uppercase tracking-wider">
                     Phone Number
-                  </h3>
+                  </h4>
                   <a
                     href="tel:+919425475675"
-                    className="font-sans text-xs sm:text-sm text-espresso/70 mt-0.5 hover:text-maroon transition-colors block"
+                    className="font-sans text-xs sm:text-sm text-espresso/70 mt-0.5 hover:text-maroon transition-colors block font-semibold focus:outline-none focus:ring-2 focus:ring-gold/60 rounded"
+                    aria-label="Call studio phone number"
                   >
                     +91 94254 75675
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5">
+              <div className="flex items-start space-x-4 text-left">
+                <div className="p-2.5 bg-gold-light rounded-xl text-gold-dark mt-0.5 shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-sans text-sm font-bold text-espresso uppercase tracking-wider">
+                  <h4 className="font-sans text-xs font-bold text-espresso uppercase tracking-wider">
                     Studio Timings
-                  </h3>
+                  </h4>
                   <p className="font-sans text-xs sm:text-sm text-espresso/70 mt-0.5">
                     10:00 AM - 8:00 PM<br />
                     Monday to Sunday
@@ -135,35 +133,44 @@ export default function Contact() {
 
             {/* Quick Actions */}
             <div className="pt-6 border-t border-gold/15 flex flex-wrap gap-4">
-              <a
+              <Button
                 href="tel:+919425475675"
-                className="bg-maroon hover:bg-maroon-dark text-cream px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-widest flex items-center space-x-2 shadow-md border border-gold/20"
+                variant="primary"
+                className="w-full sm:w-auto"
+                ariaLabel="Call Nikhar Makeovers now"
               >
-                <Phone className="w-4 h-4 text-gold-light" />
-                <span>Call Now</span>
-              </a>
-              <a
-                href="https://wa.me/919425475675?text=Hello%20Nikhar%20Herbal%20Beauty%20Parlour,%20I'd%20like%20to%20book%20a%20salon%20appointment."
+                <span className="flex items-center space-x-2 justify-center">
+                  <Phone className="w-4 h-4 text-gold-light" />
+                  <span>Call Now</span>
+                </span>
+              </Button>
+              
+              <Button
+                href="https://wa.me/919425475675?text=Hello%20Nikhar%20Makeovers,%20I'd%20like%20to%20book%20an%20appointment."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-cream px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-widest flex items-center space-x-2 shadow-md"
+                variant="secondary"
+                className="w-full sm:w-auto"
+                ariaLabel="Send WhatsApp message in a new tab"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Chat</span>
-              </a>
+                <span className="flex items-center space-x-2 justify-center">
+                  <MessageCircle className="w-4 h-4 text-green-600" />
+                  <span>WhatsApp Chat</span>
+                </span>
+              </Button>
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Form */}
+          {/* Right Column: Appointment Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7 bg-beige/30 p-8 rounded-2xl border border-gold/15 shadow-md"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-7 bg-beige/30 p-6 sm:p-8 rounded-2xl border border-gold/15 shadow-sm text-left"
           >
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-maroon mb-6 text-center lg:text-left">
-              Request An Appointment
+              Request Appointment
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -181,7 +188,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     placeholder="Enter your name"
                     required
-                    className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold font-sans"
+                    className="bg-cream border border-gold/20 rounded-xl px-4 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans h-12"
                   />
                 </div>
 
@@ -198,7 +205,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     placeholder="Enter phone number"
                     required
-                    className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold font-sans"
+                    className="bg-cream border border-gold/20 rounded-xl px-4 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans h-12"
                   />
                 </div>
               </div>
@@ -215,7 +222,7 @@ export default function Contact() {
                     value={formData.service}
                     onChange={handleInputChange}
                     required
-                    className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold font-sans"
+                    className="bg-cream border border-gold/20 rounded-xl px-4 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans h-12"
                   >
                     <option value="" disabled>Choose a service</option>
                     {servicesList.map((service, idx) => (
@@ -235,7 +242,7 @@ export default function Contact() {
                     name="date"
                     value={formData.date}
                     onChange={handleInputChange}
-                    className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold font-sans"
+                    className="bg-cream border border-gold/20 rounded-xl px-4 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans h-12"
                   />
                 </div>
               </div>
@@ -251,19 +258,23 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  placeholder="Tell us if you have any special requirements, timings, or details."
-                  className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold font-sans resize-none"
+                  placeholder="Tell us if you have any special requirements or timing details."
+                  className="bg-cream border border-gold/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/40 font-sans resize-none"
                 ></textarea>
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-maroon hover:bg-maroon-dark disabled:bg-maroon/50 text-cream py-3.5 rounded-xl text-xs font-semibold uppercase tracking-widest shadow-md border border-gold/20 transition-all cursor-pointer"
-              >
-                {isSubmitting ? "Sending Request..." : "Request Appointment"}
-              </button>
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-full h-12"
+                  disabled={isSubmitting}
+                  ariaLabel="Submit appointment booking form"
+                >
+                  {isSubmitting ? "Sending Request..." : "Request Appointment"}
+                </Button>
+              </div>
 
               {/* Success message banner */}
               {submitMessage && (
@@ -279,7 +290,7 @@ export default function Contact() {
           </motion.div>
 
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

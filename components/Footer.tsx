@@ -1,31 +1,32 @@
 "use client";
 
 import { Phone, MapPin, Clock } from "lucide-react";
+import Container from "./ui/Container";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-maroon-dark text-cream pt-16 pb-8 overflow-hidden border-t border-gold/20">
+    <footer className="relative bg-maroon-dark text-cream pt-16 pb-28 md:pb-12 overflow-hidden border-t border-gold/20">
       
-      {/* Decorative Gold Circular Mandala Frame behind footer */}
+      {/* Decorative Traditional Circular Outline (Subtle) */}
       <div className="absolute right-[-100px] bottom-[-100px] w-[350px] h-[350px] border border-gold/10 rounded-full -z-1 pointer-events-none opacity-20"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
+      <Container className="z-10 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           
-          {/* Logo & Narrative */}
+          {/* Logo & Description */}
           <div className="space-y-4 text-left">
-            <a href="#home" className="flex flex-col">
+            <a href="#home" className="flex flex-col focus:outline-none focus:ring-2 focus:ring-gold/60 rounded p-1 max-w-max">
               <span className="font-serif text-3xl font-bold tracking-wide text-cream">
                 NIKHAR
               </span>
-              <span className="text-[11px] tracking-[0.25em] text-gold uppercase font-sans -mt-1 font-semibold">
-                Herbal Beauty Parlour
+              <span className="text-[10px] tracking-[0.22em] text-gold uppercase font-sans -mt-1 font-semibold">
+                Makeovers & Beauty Studio
               </span>
             </a>
             <p className="font-sans text-xs sm:text-sm text-cream/70 leading-relaxed max-w-xs">
-              Where tradition meets timeless beauty. Serving the ladies of Badnagar and the Ujjain region with premium makeup, hair styling, skin treatments, and bridal care since 2011.
+              Where tradition meets timeless beauty. Serving ladies in Barnagar, Madhya Pradesh, with premium bridal makeovers, hairstyling, and skin therapies.
             </p>
             {/* Social Icons */}
             <div className="flex space-x-4 pt-2">
@@ -33,7 +34,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors"
+                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
                 aria-label="Instagram Profile"
               >
                 <svg
@@ -54,7 +55,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors"
+                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
                 aria-label="Facebook Page"
               >
                 <svg
@@ -75,58 +76,58 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="space-y-4 text-left">
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
-              Quick Navigation
+              Quick Links
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-cream/70 font-sans">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-cream/70 font-sans">
               <li>
-                <a href="#home" className="hover:text-gold transition-colors">Home</a>
+                <a href="#home" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Home</a>
               </li>
               <li>
-                <a href="#about" className="hover:text-gold transition-colors">About Us</a>
+                <a href="#about" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">About Studio</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Services</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Services</a>
               </li>
               <li>
-                <a href="#bridal" className="hover:text-gold transition-colors">Bridal Studio</a>
+                <a href="#bridal" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Studio</a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-gold transition-colors">Gallery</a>
+                <a href="#gallery" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Gallery Portfolio</a>
               </li>
               <li>
-                <a href="#reviews" className="hover:text-gold transition-colors">Reviews</a>
+                <a href="#reviews" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Testimonials</a>
               </li>
             </ul>
           </div>
 
-          {/* Services list links */}
+          {/* Featured Services */}
           <div className="space-y-4 text-left">
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
-              Our Services
+              Featured Work
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-cream/70 font-sans">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-cream/70 font-sans">
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Bridal Makeup Artistry</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Makeovers</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Traditional Saree Draping</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Traditional Saree Draping</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Floral Hairstyle (Gajra)</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Floral Hairstyling</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Rejuvenating Gold Facial</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Herbal Facials</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Designer Haircuts & Styling</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Designer Cuts & Styling</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors">Intricate Bridal Henna</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Hand Mehndi</a>
               </li>
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Contact details */}
           <div className="space-y-4 text-left">
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
               Contact Info
@@ -138,7 +139,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-gold shrink-0" />
-                <a href="tel:+919425475675" className="hover:text-gold transition-colors">
+                <a href="tel:+919425475675" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">
                   +91 94254 75675
                 </a>
               </li>
@@ -151,16 +152,16 @@ export default function Footer() {
 
         </div>
 
-        {/* Divider */}
+        {/* Divider & Copyright */}
         <div className="mt-12 pt-8 border-t border-gold/15 flex flex-col sm:flex-row justify-between items-center text-xs text-cream/50 font-sans space-y-4 sm:space-y-0">
-          <p>&copy; {currentYear} Nikhar Herbal Beauty Parlour. All rights reserved.</p>
+          <p>&copy; {currentYear} Nikhar Makeovers & Beauty Studio. All rights reserved.</p>
           <p className="flex items-center space-x-1">
-            <span>Designed with</span>
+            <span>Crafted with</span>
             <span className="text-gold">♥</span>
             <span>in Madhya Pradesh</span>
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

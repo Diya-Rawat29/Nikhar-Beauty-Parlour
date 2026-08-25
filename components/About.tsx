@@ -1,32 +1,34 @@
 "use client";
 
 import Image from "next/image";
-import { Star, Award, Heart, CheckCircle2 } from "lucide-react";
+import { Star, ShieldCheck, Heart, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import Container from "./ui/Container";
+import SectionHeading from "./ui/SectionHeading";
 
 export default function About() {
-  const stats = [
+  const pillars = [
     {
-      icon: <Award className="w-5 h-5 text-gold-dark" />,
-      value: "15+ Years",
-      label: "Experience",
+      icon: <Sparkles className="w-5 h-5 text-gold-dark" />,
+      title: "Bridal Specialization",
+      desc: "Customized makeover designs tailored for traditional Indian weddings.",
+    },
+    {
+      icon: <ShieldCheck className="w-5 h-5 text-gold-dark" />,
+      title: "Premium Products",
+      desc: "Top-tier skin-friendly cosmetics and organic herbal therapies.",
     },
     {
       icon: <Heart className="w-5 h-5 text-gold-dark" />,
-      value: "5,000+",
-      label: "Happy Clients",
-    },
-    {
-      icon: <Star className="w-5 h-5 text-gold-dark" />,
-      value: "4.8 Stars",
-      label: "Google Rating (150+ Reviews)",
+      title: "Client-focused Care",
+      desc: "Bespoke styling trials and warm, hygienic hospitality.",
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-cream relative overflow-hidden">
-      {/* Subtle traditional motif background */}
-      <div className="absolute right-0 top-0 w-96 h-96 opacity-[0.02] pointer-events-none">
+    <section id="about" className="py-14 sm:py-20 bg-cream relative overflow-hidden">
+      {/* Decorative background shape */}
+      <div className="absolute right-0 top-0 w-96 h-96 opacity-[0.015] pointer-events-none">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-maroon">
           <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="1" fill="none" />
           <path d="M 50 10 Q 60 40 50 90 Q 40 40 50 10" />
@@ -34,107 +36,89 @@ export default function About() {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: Premium Studio Image */}
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          
+          {/* Image - Placed first on mobile via grid ordering */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 relative"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-6 relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[1.1] rounded-2xl overflow-hidden shadow-xl border border-gold/15"
           >
-            <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl border border-gold/15">
-              <Image
-                src="/images/about_studio.jpg"
-                alt="Nikhar Luxury Beauty Studio Interior"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100%, 50%"
-              />
-            </div>
-            {/* Hanging decorative accent */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 border border-gold/20 rounded-full flex items-center justify-center bg-cream shadow-md -z-1">
-              <div className="w-20 h-20 border border-gold/10 border-dashed rounded-full flex items-center justify-center font-serif text-maroon text-xs tracking-wider">
-                Est. 2011
-              </div>
+            <Image
+              src="/images/about_studio.jpg"
+              alt="Inside Nikhar Makeovers Beauty Salon"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 550px"
+            />
+            {/* EST label */}
+            <div className="absolute bottom-4 right-4 bg-cream/90 backdrop-blur-sm px-4 py-2 rounded-xl border border-gold/15 text-[10px] font-sans font-bold tracking-widest uppercase text-maroon shadow-md">
+              Beauty Studio
             </div>
           </motion.div>
 
-          {/* Right: Copy Content */}
+          {/* Copy Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 space-y-6"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-6 space-y-6 text-left"
           >
-            <div className="space-y-2">
-              <div className="inline-flex items-center space-x-2">
-                <span className="w-6 h-[1px] bg-gold"></span>
-                <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-gold uppercase font-sans">
-                  The Art of Indian Beauty
-                </span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-maroon">
-                Nurturing Elegance, Honoring Tradition
-              </h2>
-            </div>
+            <SectionHeading
+              eyebrow="The Art of Indian Beauty"
+              title="Nurturing Elegance, Honoring Tradition"
+              align="left"
+            />
 
-            {/* Antique decorative divider */}
-            <div className="flex items-center space-x-2 py-1">
-              <span className="w-12 h-[1px] bg-gold/30"></span>
-              <span className="text-gold text-sm font-serif">❦</span>
-              <span className="w-12 h-[1px] bg-gold/30"></span>
-            </div>
-
-            <p className="font-sans text-espresso/80 text-base leading-relaxed">
-              For over a decade, **Nikhar Herbal Beauty Parlour** has been a beloved destination in Badnagar for premium ethnic beauty treatments. We believe that true beauty is a blend of heritage and personalization.
+            <p className="font-sans text-sm sm:text-base text-espresso/80 leading-relaxed">
+              **Nikhar Makeovers & Beauty Studio** is a premier destination in the Ujjain region, providing exceptional makeover services for brides and beauty enthusiasts. We believe that styling should celebrate your natural contours while keeping traditions alive.
             </p>
 
-            <p className="font-sans text-espresso/70 text-sm leading-relaxed">
-              We specialize in blending age-old herbal and natural aesthetics with high-end modern salon products. From detailed bridal styling and saree draping to deep facial treatments, our mission is to create a rejuvenating and luxury beauty experience for every client who walks through our doors.
+            <p className="font-sans text-xs sm:text-sm text-espresso/70 leading-relaxed">
+              We specialize in custom bridal makeovers, heavy lehenga and saree draping, and professional hair design. Combining premium global cosmetics with time-tested herbal treatments, we ensure that you radiate confidence on your special day.
             </p>
 
-            {/* Bullet Points */}
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <li className="flex items-start space-x-2 text-sm text-espresso/80 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-gold-dark mt-0.5" />
-                <span>Bespoke Bridal Customization</span>
-              </li>
-              <li className="flex items-start space-x-2 text-sm text-espresso/80 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-gold-dark mt-0.5" />
-                <span>Hygienic, Premium Studio Space</span>
-              </li>
-              <li className="flex items-start space-x-2 text-sm text-espresso/80 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-gold-dark mt-0.5" />
-                <span>Certified Makeup Artists</span>
-              </li>
-              <li className="flex items-start space-x-2 text-sm text-espresso/80 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-gold-dark mt-0.5" />
-                <span>Premium Quality Herbal Products</span>
-              </li>
-            </ul>
-
-            {/* Statistics */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gold/15">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col space-y-1">
-                  <div className="flex items-center space-x-1.5">
-                    {stat.icon}
-                    <span className="font-serif text-lg sm:text-xl font-bold text-maroon tracking-tight">
-                      {stat.value}
-                    </span>
+            {/* Trust Pillars */}
+            <div className="space-y-4 pt-4 border-t border-gold/10">
+              <h4 className="font-serif text-base font-bold text-espresso tracking-wide">
+                Our Trust Pillars
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {pillars.map((pillar, idx) => (
+                  <div key={idx} className="flex flex-col space-y-1">
+                    <div className="flex items-center space-x-2 text-maroon">
+                      {pillar.icon}
+                      <span className="font-sans text-xs font-bold uppercase tracking-wider text-espresso">
+                        {pillar.title}
+                      </span>
+                    </div>
+                    <p className="font-sans text-[11px] text-espresso/60 leading-relaxed">
+                      {pillar.desc}
+                    </p>
                   </div>
-                  <span className="text-[10px] sm:text-xs font-semibold tracking-wider text-espresso/60 uppercase font-sans">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            {/* Google Verified Review highlights */}
+            <div className="pt-4 flex items-center space-x-2.5">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
+                ))}
+              </div>
+              <span className="font-sans text-xs text-espresso/70 font-semibold">
+                Rated 4.8 Stars (Google Business listing)
+              </span>
+            </div>
+
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -61,3 +61,28 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(200, 162, 97, 0.15);
 }
+
+/* Accessible visible focus states */
+*:focus-visible {
+  outline: 2px solid #C8A261 !important;
+  outline-offset: 4px !important;
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
