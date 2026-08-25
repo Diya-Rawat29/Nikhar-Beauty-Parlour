@@ -8,7 +8,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-maroon-dark text-cream pt-16 pb-28 md:pb-12 overflow-hidden border-t border-gold/20">
-      
       {/* Decorative Traditional Circular Outline (Subtle) */}
       <div className="absolute right-[-100px] bottom-[-100px] w-[350px] h-[350px] border border-gold/10 rounded-full -z-1 pointer-events-none opacity-20"></div>
 
@@ -18,27 +17,27 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="space-y-4 text-left">
             <a href="#home" className="flex flex-col focus:outline-none focus:ring-2 focus:ring-gold/60 rounded p-1 max-w-max">
-              <span className="font-serif text-3xl font-bold tracking-wide text-cream">
+              <span className="font-serif text-3xl font-bold tracking-wide text-cream leading-none">
                 NIKHAR
               </span>
-              <span className="text-[10px] tracking-[0.22em] text-gold uppercase font-sans -mt-1 font-semibold">
-                Makeovers & Beauty Studio
+              <span className="text-[10px] tracking-[0.22em] text-gold uppercase font-sans mt-2 font-bold">
+                MAKEOVERS & BEAUTY
               </span>
             </a>
-            <p className="font-sans text-xs sm:text-sm text-cream/70 leading-relaxed max-w-xs">
-              Where tradition meets timeless beauty. Serving ladies in Barnagar, Madhya Pradesh, with premium bridal makeovers, hairstyling, and skin therapies.
+            <p className="font-sans text-xs sm:text-sm text-cream/80 leading-relaxed max-w-xs font-semibold">
+              Where tradition meets timeless beauty. Serving brides and clients in Barnagar, Ujjain, with premium makeovers, hair, and traditional styling.
             </p>
             {/* Social Icons */}
             <div className="flex space-x-4 pt-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/nikharmakeovers/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
+                className="p-2.5 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
                 aria-label="Instagram Profile"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 text-gold"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -51,25 +50,6 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
               </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-cream/10 rounded-full hover:bg-cream/20 text-gold-light transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
-                aria-label="Facebook Page"
-              >
-                <svg
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
             </div>
           </div>
 
@@ -78,24 +58,21 @@ export default function Footer() {
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
               Quick Links
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-cream/70 font-sans">
+            <ul className="space-y-3 text-xs sm:text-sm text-cream/70 font-sans font-semibold">
               <li>
                 <a href="#home" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Home</a>
               </li>
               <li>
-                <a href="#about" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">About Studio</a>
+                <a href="#about" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">About Story</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Services</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Services Catalog</a>
               </li>
               <li>
-                <a href="#bridal" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Studio</a>
+                <a href="#bridal" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Experience</a>
               </li>
               <li>
                 <a href="#gallery" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Gallery Portfolio</a>
-              </li>
-              <li>
-                <a href="#reviews" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Testimonials</a>
               </li>
             </ul>
           </div>
@@ -105,7 +82,7 @@ export default function Footer() {
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
               Featured Work
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-cream/70 font-sans">
+            <ul className="space-y-3 text-xs sm:text-sm text-cream/70 font-sans font-semibold">
               <li>
                 <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Makeovers</a>
               </li>
@@ -116,13 +93,7 @@ export default function Footer() {
                 <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Floral Hairstyling</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Herbal Facials</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Designer Cuts & Styling</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Bridal Hand Mehndi</a>
+                <a href="#services" className="hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded">Luxury Herbal Facials</a>
               </li>
             </ul>
           </div>
@@ -132,7 +103,7 @@ export default function Footer() {
             <h4 className="font-serif text-lg font-bold text-gold tracking-wide">
               Contact Info
             </h4>
-            <ul className="space-y-3 text-xs sm:text-sm text-cream/70 font-sans">
+            <ul className="space-y-3.5 text-xs sm:text-sm text-cream/70 font-sans font-semibold">
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <span>Jawahar Marg, Badnagar (Barnagar), Madhya Pradesh - 456771</span>
@@ -153,7 +124,7 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
-        <div className="mt-12 pt-8 border-t border-gold/15 flex flex-col sm:flex-row justify-between items-center text-xs text-cream/50 font-sans space-y-4 sm:space-y-0">
+        <div className="mt-12 pt-8 border-t border-gold/15 flex flex-col sm:flex-row justify-between items-center text-xs text-cream/50 font-sans space-y-4 sm:space-y-0 font-medium">
           <p>&copy; {currentYear} Nikhar Makeovers & Beauty Studio. All rights reserved.</p>
           <p className="flex items-center space-x-1">
             <span>Crafted with</span>

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TrustStrip from "@/components/TrustStrip";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import BridalSection from "@/components/BridalSection";
@@ -15,8 +16,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow pb-16 md:pb-0">
+      <main className="flex-grow pb-16 md:pb-0" id="home">
         <Hero />
+        <TrustStrip />
         <About />
         <Services />
         <BridalSection />

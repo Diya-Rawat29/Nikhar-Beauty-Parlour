@@ -6,60 +6,61 @@ import Container from "./ui/Container";
 import SectionHeading from "./ui/SectionHeading";
 
 export default function WhyChooseUs() {
-  const features = [
+  const benefits = [
     {
-      icon: <Award className="w-6 h-6 text-gold-dark" />,
-      title: "Certified Artists",
-      desc: "Our stylists hold certifications in traditional Indian bridal designs and advanced makeup styling.",
+      icon: <Heart className="w-5 h-5 text-gold" />,
+      title: "Personalized Beauty",
+      desc: "Custom makeup trials specifically configured to complement your skin tone and event lighting.",
     },
     {
-      icon: <Sparkles className="w-6 h-6 text-gold-dark" />,
+      icon: <Award className="w-5 h-5 text-gold" />,
+      title: "Professional Expertise",
+      desc: "Stylists certified in advanced hair techniques, bridal makeup, and saree pleating styling.",
+    },
+    {
+      icon: <Sparkles className="w-5 h-5 text-gold" />,
       title: "Premium Products",
-      desc: "We use high-quality, skin-friendly cosmetics and organic herbal blends to ensure a flawless finish.",
+      desc: "Top-tier, skin-friendly global cosmetics and organic herbal blends ensuring a clean finish.",
     },
     {
-      icon: <ShieldCheck className="w-6 h-6 text-gold-dark" />,
-      title: "Hygienic Environment",
-      desc: "We enforce strict sanitization protocols for all brushes, styling tools, and salon chairs.",
-    },
-    {
-      icon: <Heart className="w-6 h-6 text-gold-dark" />,
-      title: "Bespoke Draping & Trials",
-      desc: "We adapt styling, saree pleats, and makeup shades specifically to suit your requirements.",
+      icon: <ShieldCheck className="w-5 h-5 text-gold" />,
+      title: "Traditional + Modern",
+      desc: "Blending rich Indian heritage styling with modern, contemporary beauty aesthetics.",
     },
   ];
 
   return (
-    <section className="py-14 sm:py-20 bg-cream relative">
+    <section className="py-16 sm:py-24 bg-cream relative border-t border-gold/10">
       <Container>
         
         {/* Title */}
         <SectionHeading
-          eyebrow="Why Choose Us"
-          title="The Essence of Our Salon"
-          description="Our commitments ensure that you receive premium beauty and makeover care in a safe, professional, and comfortable studio setting."
-          className="mb-14"
+          eyebrow="Our Commitment"
+          title="Why Women Choose Nikhar"
+          description="We prioritize safety, comfort, and professional execution to deliver a luxury makeover experience in Barnagar."
+          className="mb-16"
         />
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, idx) => (
+        {/* Benefits Row/Grid - No heavy card frames, just clean alignment */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {benefits.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-cream p-6 rounded-2xl border border-gold/10 hover:border-gold/25 hover:shadow-sm transition-all duration-300 flex flex-col items-center text-center space-y-3 group"
+              className="flex flex-col items-start text-left space-y-3.5"
             >
-              <div className="p-3.5 bg-gold-light rounded-xl group-hover:bg-maroon group-hover:text-cream transition-colors duration-300">
-                {feature.icon}
+              {/* Minimal Circle Icon */}
+              <div className="p-3 bg-beige/50 text-gold-dark rounded-xl border border-gold/10 shrink-0">
+                {item.icon}
               </div>
-              <h3 className="font-serif text-base sm:text-lg font-bold text-espresso group-hover:text-maroon transition-colors tracking-wide">
-                {feature.title}
+              <h3 className="font-serif text-lg font-bold text-espresso tracking-wide">
+                {item.title}
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-espresso/70 leading-relaxed">
-                {feature.desc}
+              <p className="font-sans text-xs sm:text-sm text-espresso/70 leading-relaxed font-medium">
+                {item.desc}
               </p>
             </motion.div>
           ))}
