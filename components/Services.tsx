@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight, X, Sparkles, Star, Calendar, Scissors, Smile } from "lucide-react";
+import { ArrowRight, X, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "./ui/Container";
 import SectionHeading from "./ui/SectionHeading";
@@ -11,7 +11,7 @@ import Button from "./ui/Button";
 interface ServiceItem {
   name: string;
   desc: string;
-  icon: React.ReactNode;
+  image: string;
   price: string;
 }
 
@@ -65,19 +65,19 @@ export default function Services() {
         {
           name: "Signature Bridal Makeover",
           desc: "Flawless HD or Airbrush bridal makeup tailored specifically for your wedding attire and professional photography.",
-          icon: <Sparkles className="w-4 h-4" />,
+          image: "/images/hero_bridal.jpg",
           price: "Price on consultation",
         },
         {
           name: "Pre-Bridal Grooming",
           desc: "Head-to-toe beauty preparation including body scrub, luxury facials, hair treatments, waxing, and threading.",
-          icon: <Smile className="w-4 h-4" />,
+          image: "/images/about_studio.jpg",
           price: "Enquire for packages",
         },
         {
           name: "Bridal Mehndi",
           desc: "Intricate, dark-staining traditional mandalas and floral bridal henna designs for hands and feet.",
-          icon: <Star className="w-4 h-4" />,
+          image: "/images/gallery_mehndi.jpg",
           price: "Price on consultation",
         },
       ],
@@ -94,19 +94,19 @@ export default function Services() {
         {
           name: "Engagement Makeover",
           desc: "Luminous, romantic look designed specifically to coordinates with heavy occasion wear.",
-          icon: <Smile className="w-4 h-4" />,
+          image: "/images/gallery_makeup.jpg",
           price: "Price on consultation",
         },
         {
           name: "Party / Guest Makeover",
           desc: "Sophisticated party look styled for family celebrations, receptions, and gatherings.",
-          icon: <Star className="w-4 h-4" />,
+          image: "/images/bridal_section.jpg",
           price: "Price on consultation",
         },
         {
           name: "Festive Makeover",
           desc: "Fresh, classic look emphasizing clear skin, defined eyes, and traditional bindi styling.",
-          icon: <Sparkles className="w-4 h-4" />,
+          image: "/images/hero_bridal.jpg",
           price: "Price on consultation",
         },
       ],
@@ -123,25 +123,25 @@ export default function Services() {
         {
           name: "Bridal Hairstyling & Gajra",
           desc: "Intricate traditional braids, royal flower buns, or modern styled pins arranged securely.",
-          icon: <Scissors className="w-4 h-4" />,
+          image: "/images/gallery_hair.jpg",
           price: "Price on consultation",
         },
         {
           name: "Luxury Hair Spa",
           desc: "Deep oil conditioning steam treatment to repair texture, lock shine, and remove dryness.",
-          icon: <Sparkles className="w-4 h-4" />,
+          image: "/images/gallery_interior.jpg",
           price: "Price on consultation",
         },
         {
           name: "Keratin & Straightening",
           desc: "Professional rebonding or smoothing treatments for frizz-free, manageable, and silky tresses.",
-          icon: <Scissors className="w-4 h-4" />,
+          image: "/images/about_studio.jpg",
           price: "Price on consultation",
         },
         {
           name: "Creative Cut & Blowdry",
           desc: "Haircut tailored to your facial structure, finished with a voluminous premium blowdry styling.",
-          icon: <Scissors className="w-4 h-4" />,
+          image: "/images/gallery_hair.jpg",
           price: "Price on consultation",
         },
       ],
@@ -158,25 +158,25 @@ export default function Services() {
         {
           name: "Luxury Herbal Facials",
           desc: "Nourishing Gold, Fruit, or Herbal facials using organic ingredients for safe skin brightening.",
-          icon: <Smile className="w-4 h-4" />,
+          image: "/images/about_studio.jpg",
           price: "Price on consultation",
         },
         {
           name: "Skin Glow Cleanup",
           desc: "Deep pore cleaning and tan-removal treatments to reveal a fresh, clean complexion.",
-          icon: <Sparkles className="w-4 h-4" />,
+          image: "/images/gallery_makeup.jpg",
           price: "Price on consultation",
         },
         {
           name: "Hygienic Waxing",
           desc: "Sanitized honey or chocolate waxing services for full arms and legs.",
-          icon: <Smile className="w-4 h-4" />,
+          image: "/images/gallery_interior.jpg",
           price: "Price on consultation",
         },
         {
           name: "Eyebrow Threading & Shaping",
           desc: "Precise facial threading to define brows and clean upper lip lines.",
-          icon: <Star className="w-4 h-4" />,
+          image: "/images/gallery_makeup.jpg",
           price: "Price on consultation",
         },
       ],
@@ -229,7 +229,7 @@ export default function Services() {
                 <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/45 to-transparent transition-opacity duration-300"></div>
               </div>
 
-              {/* Card content content */}
+              {/* Card content */}
               <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-8 text-cream text-left space-y-2 pointer-events-none select-none">
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-sm font-bold text-gold-light italic">
@@ -304,9 +304,16 @@ export default function Services() {
                     key={idx}
                     className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-5 border-b border-gold/10 last:border-b-0 last:pb-0"
                   >
-                    <div className="flex items-start space-x-3.5 text-left">
-                      <div className="p-2.5 bg-beige text-maroon rounded-xl shrink-0 mt-0.5 border border-gold/10">
-                        {service.icon}
+                    <div className="flex items-start space-x-4 text-left">
+                      {/* Image Thumbnail as Icon */}
+                      <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-gold/20 shadow-sm mt-0.5">
+                        <Image
+                          src={service.image}
+                          alt={service.name}
+                          fill
+                          className="object-cover"
+                          sizes="48px"
+                        />
                       </div>
                       <div className="space-y-1">
                         <h4 className="font-serif text-base sm:text-lg font-bold text-espresso">
